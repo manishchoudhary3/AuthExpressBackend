@@ -582,6 +582,7 @@ app.post('/login/loginuser',async (req, res) => {
                 
                 const user = {name : req.body.name};
                 const accessToken = jwt.sign(user,process.env.ACCESS_TOKEN_SECRET);
+                console.log("Customer accessToken = ",accessToken);
                 res.json({accessToken : accessToken});
                 res.status(201).send();
             }else {
@@ -763,7 +764,7 @@ app.post('/getserviceproviders',authenticateToken,async(req,res)=>{
 
 
 
-app.post('/serviceproviders',authenticateToken,async (req,res)=>{
+app.get('/serviceproviders',authenticateToken,async (req,res)=>{
 
     //console.log('Hello');
     try {
@@ -1226,9 +1227,10 @@ app.post('/serviceproviders/addSP',authenticateToken,async (req,res)=>{
 
 app.post('/serviceproviders/updateDetails/uploadImage',authenticateToken, async (req,res)=>{
 
-    
+    console.log("hello brother");
     try {
         //console.log("req.body.file = ",req.body.file);
+        //console.log("req = ",req);
         await upload(req, res);
     
         //console.log("req = ",req);
